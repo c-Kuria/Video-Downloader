@@ -25,6 +25,7 @@ This application supports video downloading from popular platforms like:
 For a full list of supported websites, run:
 ```bash
 yt-dlp --list-extractors
+```
 
 ---
 
