@@ -41,9 +41,11 @@ def download_video(video_url, format_code):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python youtube_video_downloader.py <YouTube Video URL>")
+        print("Usage: python youtube_video_downloader.py <Video URL>")
+        print("Supports YouTube, Vimeo, TikTok, Facebook, Instagram, Twitter, and more!")
     else:
         video_url = sys.argv[1]
+        download_video(video_url)
         
         # Step 1: List available formats
         list_video_formats(video_url)

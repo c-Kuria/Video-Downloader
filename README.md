@@ -1,4 +1,4 @@
-# YouTube Video Downloader and Audio Merger
+# Video Downloader and Audio Merger
 
 A simple terminal-based Python application for downloading YouTube videos and audio. This tool uses `yt-dlp` to list available formats, download videos or audio separately, and even merge pre-downloaded video files with audio streams seamlessly using `FFmpeg`.
 
@@ -13,6 +13,21 @@ A simple terminal-based Python application for downloading YouTube videos and au
 
 ---
 
+### Supported Platforms
+This application supports video downloading from popular platforms like:
+- YouTube
+- Vimeo
+- TikTok
+- Facebook
+- Instagram
+- Twitter
+
+For a full list of supported websites, run:
+```bash
+yt-dlp --list-extractors
+
+---
+
 ## Requirements:
 - Python 3.x
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) (Install via `pip install yt-dlp`)
@@ -23,10 +38,10 @@ A simple terminal-based Python application for downloading YouTube videos and au
 ## Usage:
 
 ### 1. Download a Video with Audio:
-Run the `youtube_video_downloader.py` script to download videos in your desired quality:
+Run the `video_downloader.py` script to download videos in your desired quality:
 
 ```bash
-python youtube_video_downloader.py <YouTube Video URL>
+python video_downloader.py <YouTube Video URL>
 ```
 
 - The script will list all available formats.
