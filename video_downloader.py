@@ -51,7 +51,7 @@ if __name__ == "__main__":
         list_video_formats(video_url)
         
         # Step 2: Prompt the user to select a format
-        format_code = input("Enter the format code of the desired quality: ")
+        format_code = input("Enter the format code/ID of the desired quality: ")
         
         # Step 3: Download the video in the chosen format
         download_video(video_url, format_code)
