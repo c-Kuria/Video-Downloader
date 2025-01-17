@@ -61,7 +61,7 @@ if __name__ == "__main__":
         
         # Step 2: Prompt the user to select a format
         while True:
-            format_code = input("Enter the format code of the desired quality: ").strip()
+            format_code = input("Enter the format code/ID of the desired quality: ").strip()
             if format_code:
                 break
             print("Invalid input. Please enter a valid format code.")
