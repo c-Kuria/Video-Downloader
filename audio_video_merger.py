@@ -3,11 +3,18 @@ import subprocess
 import sys
 from tqdm import tqdm  # Import tqdm for progress bar
 
-def download_audio(video_url, output_filename):
+def create_output_folder(folder_name):
+    """Create the output folder if it doesn't exist."""
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)  # Create the folder if it doesn't exist
+        print(f"Created output folder: {folder_name}")
+    else:
+        print(f"Output folder already exists: {folder_name}")
+
+def download_audio(video_url, output_folder):
     try:
-        # Define output path (current working directory)
-        output_path = os.getcwd()
-        audio_output = os.path.join(output_path, output_filename)
+        # Define the output path for the audio
+        audio_output = os.path.join(output_folder, "audio.m4a")
 
         print(f"Downloading audio to: {audio_output}")
 
@@ -78,6 +85,10 @@ def merge_audio_video(video_file, audio_file, output_file):
         sys.exit(1)
 
 if __name__ == "__main__":
+    # Define the output folder name
+    output_folder = "output formats"
+    create_output_folder(output_folder)  # Create the output folder
+
     if len(sys.argv) < 3:
         print("Usage: python audio_video_merger.py <Video File Path> <YouTube Video URL>")
     else:
@@ -85,10 +96,10 @@ if __name__ == "__main__":
         video_url = sys.argv[2]
 
         # Step 1: Download the audio
-        audio_file = download_audio(video_url, "audio.m4a")
+        audio_file = download_audio(video_url, output_folder)
 
         # Step 2: Merge video and audio
-        output_file = "merged_output.mp4"
+        output_file = os.path.join(output_folder, "merged_output.mp4")  # Save merged file in the same folder
         merge_audio_video(video_file, audio_file, output_file)
 
         print(f"Final merged file: {output_file}")
