@@ -11,10 +11,10 @@ def create_output_folder(folder_name):
     else:
         print(f"Output folder already exists: {folder_name}")
 
-def download_audio(video_url, output_folder):
+def download_audio(video_url, output_folder, audio_filename):
     try:
         # Define the output path for the audio
-        audio_output = os.path.join(output_folder, "audio.m4a")
+        audio_output = os.path.join(output_folder, audio_filename)
 
         print(f"Downloading audio to: {audio_output}")
 
@@ -95,11 +95,15 @@ if __name__ == "__main__":
         video_file = sys.argv[1]
         video_url = sys.argv[2]
 
+        # Extract the base name of the video file (without extension)
+        base_name = os.path.splitext(os.path.basename(video_file))[0]
+
         # Step 1: Download the audio
-        audio_file = download_audio(video_url, output_folder)
+        audio_filename = f"{base_name}_audio.m4a"  # Use the base name for audio file
+        audio_file = download_audio(video_url, output_folder, audio_filename)
 
         # Step 2: Merge video and audio
-        output_file = os.path.join(output_folder, "merged_output.mp4")  # Save merged file in the same folder
+        output_file = os.path.join(output_folder, f"{base_name}_merged_output.mp4")  # Use the base name for merged file
         merge_audio_video(video_file, audio_file, output_file)
 
         print(f"Final merged file: {output_file}")
