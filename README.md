@@ -54,37 +54,37 @@ pip install -r requirements.txt
 
 ## Basic Usage
 
-### Single URL download
+#### Single URL download
 ```
 python downloader.py "URL" -f mp4 --metadata
 ```
 
-### Batch download from file
+#### Batch download from file
 ```
 python downloader.py -b urls.txt -o "%(title)s - %(uploader)s.%(ext)s"
 ```
 
-### Download as MP3 with metadata
+#### Download as MP3 with metadata
 ```
 python downloader.py "URL" -f mp3
 ```
 
-### Download with subtitles and proxy
+#### Download with subtitles and proxy
 ```
 python downloader.py "URL" -s -p socks5://localhost:1080
 ```
 
-### Download with subtitles and metadata
+#### Download with subtitles and metadata
 ```
 python downloader.py "URL" -s -m
 ```
 
-### Throttle download speed (1MB/s)
+#### Throttle download speed (1MB/s)
 ```
 python downloader.py "URL" -l 1024
 ```
 
-### Use proxy and speed limiting
+#### Use proxy and speed limiting
 ```
 python downloader.py "URL" -p socks5://proxy:port -l 1024
 ```
