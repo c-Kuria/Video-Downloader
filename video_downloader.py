@@ -101,6 +101,9 @@ class VideoDownloader:
             self._save_history(entry)
             return False
 
+def list_video_formats():
+    return ['mp4', 'mkv', 'mp3']  # Example formats
+
 def main():
     parser = argparse.ArgumentParser(description='Universal Media Downloader')
     parser.add_argument('urls', nargs='*', help='URL(s) to download')
