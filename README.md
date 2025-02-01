@@ -5,52 +5,93 @@ A simple terminal-based Python application for downloading YouTube videos and au
 ---
 
 ## Features:
-- Lists all available video and audio formats for selection.
-- Downloads videos in the highest quality with audio.
-- Option to download audio separately and merge with an existing video file.
-- Automatically merges video and audio into a single MP4 file.
-- Lightweight and easy to use directly from the terminal.
+✅ **Multi-platform Support** - Download from 1000+ sites (YouTube, Vimeo, Dailymotion, TikTok, Facebook, etc.)  
+✅ **Smart Quality Selection** - Automatically downloads highest quality video with audio  
+✅ **Auto Merge Capability** - Combines video+audio streams when needed (MP4/MKV)  
+✅ **Batch Processing** - Download multiple URLs simultaneously from file input  
+✅ **Advanced Features**:
+   - Progress tracking with real-time statistics  
+   - Automatic subtitle downloads (.srt/.vtt)  
+   - Metadata embedding (title, artist, thumbnail)  
+   - Download history tracking (JSON format)  
+   - Proxy/VPN support for restricted content  
+   - Bandwidth throttling controls  
+   - Custom filename templates (e.g. `{title}-{uploader}.mp4`)  
+   - Multiple output formats (MP4, MKV, MP3)  
+   - Comprehensive error handling with retries  
 
 ---
 
-### Supported Platforms
-This application supports video downloading from popular platforms like:
-- YouTube
-- Vimeo
-- TikTok
-- Facebook
-- Instagram
-- Twitter
+## Supported Platforms
+This downloader supports **1000+ websites** through yt-dlp's extraction network including:
 
-For a full list of supported websites, run:
+- YouTube (videos/shorts/playlists)  
+- Vimeo  
+- TikTok  
+- Facebook  
+- Instagram  
+- Twitter/X  
+- Dailymotion  
+- SoundCloud  
+- Twitch  
+- Bilibili  
+- Niconico  
+
+For complete list of supported sites, run:
 ```bash
 yt-dlp --list-extractors
 ```
 
----
+## Requirements & Installation:
 
-## Requirements:
-- Python 3.x
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) (Install via `pip install yt-dlp`)
-- [FFmpeg](https://ffmpeg.org) (Required for merging video and audio)
+- Python 3.8+
 
----
+## Dependencies
 
-## Usage:
-
-### 1. Download a Video with Audio:
-Run the `video_downloader.py` script to download videos in your desired quality:
-
-```bash
-python video_downloader.py <YouTube Video URL>
+```
+pip install -r requirements.txt
 ```
 
-- The script will list all available formats.
-- Enter the format code to download the video with the best audio merged automatically.
+## Basic Usage
+
+### Single URL download
+```
+python downloader.py "URL" -f mp4 --metadata
+```
+
+### Batch download from file
+```
+python downloader.py -b urls.txt -o "%(title)s - %(uploader)s.%(ext)s"
+```
+
+### Download as MP3 with metadata
+```
+python downloader.py "URL" -f mp3
+```
+
+### Download with subtitles and proxy
+```
+python downloader.py "URL" -s -p socks5://localhost:1080
+```
+
+### Download with subtitles and metadata
+```
+python downloader.py "URL" -s -m
+```
+
+### Throttle download speed (1MB/s)
+```
+python downloader.py "URL" -l 1024
+```
+
+### Use proxy and speed limiting
+```
+python downloader.py "URL" -p socks5://proxy:port -l 1024
+```
 
 ---
 
-### 2. Merge Pre-Downloaded Video with Audio:
+## Merge Pre-Downloaded Video with Audio:
 If you have already downloaded a video (without audio) and want to merge it with the audio stream:
 
 1. Use the `audio_video_merger.py` script:
